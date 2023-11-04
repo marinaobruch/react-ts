@@ -1,4 +1,7 @@
 // snippet "rafc"
+// npx create-react-app . --template typescript
+// npm i react-router-dom @types/react-router-dom
+
 import React, { useEffect, useState } from "react";
 import Card, { CardVariant } from "./components/Card";
 import { ITodo, IUser } from "./types/types";
@@ -6,11 +9,12 @@ import axios from "axios";
 import List from "./components/List";
 import UserItem from "./components/UserItem";
 import TodoItem from "./components/TodoItem";
+import EventsExample from "./components/EventsExample";
+import { BrowserRouter, Route } from "react-router-dom";
 
 export const App = () => {
   const [users, setUsers] = useState<IUser[]>([]);
   const [todos, setTodos] = useState<ITodo[]>([]);
-
   useEffect(() => {
     fetchUsers();
     fetchTodos();
@@ -40,6 +44,7 @@ export const App = () => {
 
   return (
     <div>
+      <EventsExample />
       <Card
         onClick={(num) => console.log("click", num)}
         variant={CardVariant.outline}
